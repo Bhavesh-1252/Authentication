@@ -30,7 +30,7 @@ const ChangePassword = () => {
 
         try {
             setIsLoading(true)
-            const res = await axios.post(`${import.meta.env.VITE_API_URL}/change-password/${email}`, { newPassword, confirmPassword })
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/user/change-password/${email}`, { newPassword, confirmPassword })
             setSuccess(res.data.message);
             setTimeout(() => {
                 navigate("/login")
@@ -74,7 +74,7 @@ const ChangePassword = () => {
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)} />
                             <Button
-                                className="bg-green-600 hover:bg-green-700 w-full"
+                                className="bg-green-600 cursor-pointer hover:bg-green-700 w-full"
                                 disabled={isLoading}
                                 onClick={handleChangePassword}>
                                 

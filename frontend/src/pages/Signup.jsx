@@ -36,7 +36,7 @@ const Signup = () => {
         try {
             
             setIsLoading(true)
-            const res = await axios.post(`${import.meta.env.VITE_API_URL}/register`, formData, {
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/user/register`, formData, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -119,7 +119,7 @@ const Signup = () => {
                             </div>
                         </CardContent>
                         <CardFooter className="flex-col gap-2">
-                            <Button type="submit" onClick={handleSubmit} className="w-full bg-green-600 hover:bg-green-700">
+                            <Button type="submit" onClick={handleSubmit} className="w-full cursor-pointer bg-green-600 hover:bg-green-700">
                                 {isLoading ?
                                     (<>
                                         <Loader2 className='mr-2 animate-spin' />

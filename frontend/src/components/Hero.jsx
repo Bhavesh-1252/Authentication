@@ -4,20 +4,21 @@ import { Badge } from './ui/badge'
 import { Button } from './ui/button'
 import { useNavigate } from 'react-router-dom'
 import { getData } from '@/context/UserContext'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
-  const {user} = getData()
+  const { user } = getData()
   const navigate = useNavigate()
   return (
     <div className="flex items-center w-full md:h-[700px] h-screen bg-green-50 overflow-hidden">
       <section className=" w-full">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
-           {
-            user &&
-             <h1 className='font-bold text-4xl'>Welcome, {user.username}</h1>
-           }
-            
+            {
+              user &&
+              <h1 className='font-bold text-4xl'>Welcome, {user.username}</h1>
+            }
+
             <div className="space-y-2">
               <Badge variant="secondary" className="mb-4 text-green-800 border border-green-200">
                 <Zap className="w-3 h-3 mr-1" />
@@ -33,7 +34,7 @@ const Hero = () => {
               </p>
             </div>
             <div className="space-x-4">
-              <Button onClick={()=>navigate('/notes')} size="lg" className="h-12 px-8 relative bg-green-600 hover:bg-green-500">
+              <Button onClick={() => navigate('/notes')} size="lg" className="h-12 cursor-pointer px-8 relative bg-green-600 hover:bg-green-500">
                 Start Taking Notes
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -42,7 +43,7 @@ const Hero = () => {
               </Button>
             </div>
             <p className="text-sm text-green-800">
-              Free forever • No credit card required • 2 minutes setup
+              Designed & Developed by <Link className='hover:underline' to={"https://sutharbhavesh.vercel.app"}>Bhavesh Suthar </Link>with ❤︎
             </p>
           </div>
         </div>

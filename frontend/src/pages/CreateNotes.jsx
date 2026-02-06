@@ -57,7 +57,7 @@ const CreateNotes = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/getnotes`, { user });
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/user/getnotes`, { user });
       setFetchedData(res.data);
 
 
@@ -86,14 +86,14 @@ const CreateNotes = () => {
     try {
       let res;
       if (editId) {
-        res = await axios.post(`${import.meta.env.VITE_API_URL}/notes/${editId}`, formDataToSend, {
+        res = await axios.post(`${import.meta.env.VITE_API_URL}/user/notes/${editId}`, formDataToSend, {
           headers: {
             "Content-Type": "multipart/form-data"
           }
         })
       }
       else {
-        res = await axios.post(`${import.meta.env.VITE_API_URL}/notes`, formDataToSend, {
+        res = await axios.post(`${import.meta.env.VITE_API_URL}/user/notes`, formDataToSend, {
           headers: {
             "Content-Type": "multipart/form-data"
           }
@@ -136,7 +136,7 @@ const CreateNotes = () => {
     if (!ok) return;
 
     try {
-      const res = await axios.delete(`${import.meta.env.VITE_API_URL}/notes/${id}`);
+      const res = await axios.delete(`${import.meta.env.VITE_API_URL}/user/notes/${id}`);
 
       fetchData();
       toast.success(res.data.message)

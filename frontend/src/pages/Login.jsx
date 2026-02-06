@@ -38,7 +38,7 @@ const Login = () => {
 
     return async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/profile`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/profile`, {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
@@ -60,7 +60,7 @@ const Login = () => {
     try {
 
       setIsLoading(true)
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/login`
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/user/login`
         , formData, {
         headers: {
           "Content-Type": "application/json",
@@ -148,7 +148,7 @@ const Login = () => {
               </div>
 
               <div className='my-4'>
-                <Button type="submit" onClick={handleSubmit} className="w-full bg-green-600 hover:bg-green-700">
+                <Button type="submit" onClick={handleSubmit} className="w-full cursor-pointer bg-green-600 hover:bg-green-700">
                   {isLoading ?
                     (<>
                       <Loader2 className='mr-2 animate-spin' />

@@ -30,7 +30,7 @@ const ForgotPassword = () => {
         e.preventDefault();
         try {
             setIsLoading(true);
-            const res = await axios.post(`${import.meta.env.VITE_API_URL}/forgot-password`, { email: email })
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/user/forgot-password`, { email: email })
             if (res.data.success) {
                 navigate(`/verify-otp/${email}`)
                 toast.success(res.data.message)
@@ -99,7 +99,7 @@ const ForgotPassword = () => {
                                             </div>
                                         </div>
 
-                                        <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 my-2">
+                                        <Button type="submit" className="w-full bg-green-600 cursor-pointer hover:bg-green-700 my-2">
                                             {
                                                 isLoading ? (<>
                                                     <Loader className='mr-2 w-4 h-4 animate-spin' />

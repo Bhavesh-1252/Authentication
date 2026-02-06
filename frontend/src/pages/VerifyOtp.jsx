@@ -44,7 +44,7 @@ const ForgotPassword = () => {
 
         try {
             setIsLoading(true);
-            const res = await axios.post(`${import.meta.env.VITE_API_URL}/verify-otp/${email}`, { otp: finalOtp })
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/user/verify-otp/${email}`, { otp: finalOtp })
             setSuccessMessage(res.data.message)
             setTimeout(() => {
                 navigate(`/change-password/${email}`);
@@ -131,7 +131,7 @@ const ForgotPassword = () => {
                                             <Button
                                                 onClick={handleVerify}
                                                 disabled={isLoading || otp.some((digit) => digit === "")}
-                                                className={"bg-green-600 w-full"}>
+                                                className={"bg-green-600 hover:bg-green-700 cursor-pointer w-full"}>
                                                 {
                                                     isLoading ?
                                                         <>
