@@ -11,20 +11,12 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json())
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: [
+        "http://localhost:5173",
+        "https://yournotesapp.vercel.app"
+    ],
     Credential: true
 }))
-
-// app.use(cors({
-//     origin: "http://localhost:5174",
-//     Credential: true
-// }))
-
-// app.use(cors({
-//     origin: "http://localhost:5175",
-//     Credential: true
-// }))
-
 app.use("/user", userRoute)
 
 app.listen(PORT, () => {
