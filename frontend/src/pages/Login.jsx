@@ -35,9 +35,10 @@ const Login = () => {
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
-    console.log(accessToken)
+    console.log(accessToken);
 
-    return async () => {
+    (async () => {
+
       try {
         console.log(`${import.meta.env.VITE_API_URL}/user/profile`);
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/profile`, {
@@ -51,7 +52,8 @@ const Login = () => {
       } catch (error) {
         console.log(error.response?.data?.message)
       }
-    }
+
+    })()
   }, [])
 
 
