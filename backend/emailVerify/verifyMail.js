@@ -10,13 +10,18 @@ const __dirname = path.dirname(__filename);
 
 export const verifyMail = async (token, email) => {
 
+    console.log("========================================")
+    console.log("MAIL USER: ", process.env.MAIL_USER)
+    console.log("MAIL PASS: ", process.env.MAIL_PASS)
+    console.log("========================================")
+
     const emailTemplateSource = fs.readFileSync(path.join(__dirname, "template.hbs"), "utf-8");
-    console.log(emailTemplateSource);
+    // console.log(emailTemplateSource);
 
     const template = Handlebars.compile(emailTemplateSource);
     console.log(template)
     const htmlToSend = template({ token: encodeURIComponent(token) })
-    console.log(htmlToSend)
+    // console.log(htmlToSend)
 
     const transporter = nodeMailer.createTransport({
         service: "gmail",
@@ -25,7 +30,7 @@ export const verifyMail = async (token, email) => {
             pass: process.env.MAIL_PASS
         }
     })
-    console.log(transporter);
+    // console.log(transporter);
 
     const mailConfiguration = {
         from: process.env.MAIL_USER,
@@ -33,10 +38,10 @@ export const verifyMail = async (token, email) => {
         subject: "Email Verification",
         html: htmlToSend
     }
-    console.log(mailConfiguration)
+    // console.log(mailConfiguration)
 
     transporter.sendMail(mailConfiguration, function (error, info) {
-        console.log("email sending")
+        console.log(info)
         if (error) {
             throw new Error(error)
         }
