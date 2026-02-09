@@ -169,6 +169,7 @@ export const loginUser = async (req, res) => {
 
 export const rememberSession = async (req, res) => {
     const user = await User.findById(req.userId);
+    console.log(user);
     return res.status(201).json({
         success: true,
         message: `Welcome Back ${user.username}`,
