@@ -15,7 +15,7 @@ app.use(cors({
         "http://localhost:5173",
         "https://yournotesapp.vercel.app"
     ],
-    Credential: true
+    credentials: true
 }))
 app.use("/user", userRoute)
 
