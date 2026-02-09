@@ -32,6 +32,10 @@ export const verifyMail = async (token, email) => {
     })
     // console.log(transporter);
 
+    console.log('Verifying SMTP connection...');
+    await transporter.verify();
+    console.log('SMTP connection successful!');
+
     const mailConfiguration = {
         from: process.env.MAIL_USER,
         to: email,
