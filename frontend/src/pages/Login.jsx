@@ -44,11 +44,11 @@ const Login = () => {
             Authorization: `Bearer ${accessToken}`
           }
         })
-
+        console.log(res.data)
         setUser(res.data.user)
         navigate("/")
       } catch (error) {
-        console.log(error.message)
+        console.log(error.response?.data?.message)
       }
     }
   }, [])
