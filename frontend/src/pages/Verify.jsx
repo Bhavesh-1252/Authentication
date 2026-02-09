@@ -10,12 +10,14 @@ const Verify = () => {
     useEffect(() => {
         const verifyEmail = async () => {
             try {
+                console.log(`${import.meta.env.VITE_API_URL}/user/verify`)
                 const res = await axios.post(`${import.meta.env.VITE_API_URL}/user/verify`, {}, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 })
 
+                console.log(res.data)
                 if (res.data) {
                     setStatus("✅ Email Verified Successfully")
                     setTimeout(() => {

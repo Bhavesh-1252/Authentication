@@ -65,13 +65,15 @@ export const verification = async (req, res) => {
         let decoded;
         try {
             decoded = jwt.verify(token, process.env.SECRET_KEY)
-        } catch (error) {
+        }
+        catch (error) {
             if (error.name === "TokenExpiredError") {
                 return res.status(400).json({
                     success: false,
                     message: "The registration token has expired"
                 })
             }
+
             return res.status(400).json({
                 success: false,
                 message: "Token verification failed"
@@ -169,7 +171,6 @@ export const loginUser = async (req, res) => {
 
 export const rememberSession = async (req, res) => {
     const user = await User.findById(req.userId);
-    console.log(user);
     return res.status(201).json({
         success: true,
         message: `Welcome Back ${user.username}`,

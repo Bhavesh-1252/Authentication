@@ -10,10 +10,13 @@ const __dirname = path.dirname(__filename);
 
 export const verifyMail = async (token, email) => {
 
-const emailTemplateSource = fs.readFileSync(path.join(__dirname, "template.hbs"), "utf-8");
+    const emailTemplateSource = fs.readFileSync(path.join(__dirname, "template.hbs"), "utf-8");
+    console.log(emailTemplateSource);
 
-const template = Handlebars.compile(emailTemplateSource);
-const htmlToSend = template({token: encodeURIComponent(token)})
+    const template = Handlebars.compile(emailTemplateSource);
+    console.log(template)
+    const htmlToSend = template({ token: encodeURIComponent(token) })
+    console.log(htmlToSend)
 
     const transporter = nodeMailer.createTransport({
         service: "gmail",
@@ -32,7 +35,7 @@ const htmlToSend = template({token: encodeURIComponent(token)})
 
     transporter.sendMail(mailConfiguration, function (error, info) {
         if (error) {
-           throw new Error(error)
+            throw new Error(error)
         }
         console.log("Email send successfully")
     })

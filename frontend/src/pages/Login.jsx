@@ -40,13 +40,11 @@ const Login = () => {
     (async () => {
 
       try {
-        console.log(`${import.meta.env.VITE_API_URL}/user/profile`);
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/profile`, {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
         })
-        console.log(res.data)
         setUser(res.data.user)
         navigate("/")
       } catch (error) {
