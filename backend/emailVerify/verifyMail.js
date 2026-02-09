@@ -25,6 +25,7 @@ export const verifyMail = async (token, email) => {
             pass: process.env.MAIL_PASS
         }
     })
+    console.log(transporter);
 
     const mailConfiguration = {
         from: process.env.MAIL_USER,
