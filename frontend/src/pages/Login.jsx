@@ -35,6 +35,7 @@ const Login = () => {
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
+    console.log(accessToken)
 
     return async () => {
       try {
