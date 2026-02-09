@@ -34,7 +34,9 @@ export const registerUser = async (req, res) => {
         newUser.token = token
         await newUser.save()
 
-        verifyMail(token, email)
+        const mailVerify = verifyMail(token, email) // sending mail to the user to verify
+        console.log(mailVerify);
+        
         return res.status(201).json({
             success: true,
             message: "User registered successfully",

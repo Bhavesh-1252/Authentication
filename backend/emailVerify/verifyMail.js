@@ -32,11 +32,14 @@ export const verifyMail = async (token, email) => {
         subject: "Email Verification",
         html: htmlToSend
     }
+    console.log(mailConfiguration)
 
     transporter.sendMail(mailConfiguration, function (error, info) {
+        console.log("email sending")
         if (error) {
             throw new Error(error)
         }
         console.log("Email send successfully")
     })
+    console.log("email send")
 }
